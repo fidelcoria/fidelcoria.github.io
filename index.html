@@ -3,22 +3,21 @@
         <link rel="stylesheet" href="clock.css"/>
     </head>
     <body>
-        <div style="width: 1000px; height: 1000px;">
+        <div id="wrapper">
             <div id="faceContainer">
                 <img
                     id="clockFace"
                     src="clock.svg"
                     alt="clock face"
-                    width="333px"
-                    height="333px"
                 />
             </div>
-            <div id="viewport" style="left: 0px; top: 0px; width: 1000px; height: 1000px; position: absolute">
+            <div id="hourHand" class="debug-div" style="position:absolute; left: 200px; top: 300px; height: 0px; width: 200px;"></div>
+
+            <div id="viewportContainer" class="pin-to-corner">
                 <img
+                    id="clockViewport"
                     src="clock_mask.svg"
                     alt="clock view port"
-                    width="1000px"
-                    height="1000px"
                 />
             </div>
         </div>

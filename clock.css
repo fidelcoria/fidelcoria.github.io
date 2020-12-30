@@ -14,12 +14,7 @@
 }
 
 #faceContainer {
-    left: 200px;
-    top: 200px;
     position: absolute;
-
-    min-width: 600px;
-    min-height: 600px;
 
     /* center vertically and horizontally */
     display: flex;
@@ -28,5 +23,5 @@
 }
 
 .debug-div  {
-    outline: black solid 2px;
+    outline: red solid 2px;
 }
