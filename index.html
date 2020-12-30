@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-
 <html>
-<head>
-
-	<title>Fidel Coria</title>
-
-</head>
-
-<body>
-
-Under Construction
-
-</body>
+    <head>
+        <link rel="stylesheet" href="clock.css"/>
+    </head>
+    <body>
+        <div style="width: 1000px; height: 1000px;">
+            <div id="faceContainer">
+                <img
+                    id="clockFace"
+                    src="clock.svg"
+                    alt="clock face"
+                    width="333px"
+                    height="333px"
+                />
+            </div>
+            <div id="viewport" style="left: 0px; top: 0px; width: 1000px; height: 1000px; position: absolute">
+                <img
+                    src="clock_mask.svg"
+                    alt="clock view port"
+                    width="1000px"
+                    height="1000px"
+                />
+            </div>
+        </div>
+        Zoom: <span id="outputZoom">0</span>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="200" value="0" class="slider" id="zoom">
+        </div>
+        Time: <span id="outputTime">0</span>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="360" value="0" class="slider" id="time">
+        </div>
+        <script src="clock.js"></script>
+    </body>
 </html>

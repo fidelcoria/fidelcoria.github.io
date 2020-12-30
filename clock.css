@@ -1,0 +1,32 @@
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+  
+.slider {
+    width: 100%; /* Full-width */
+    background: #d3d3d3; /* Grey background */
+}
+
+.pin-to-corner {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+#faceContainer {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+
+    min-width: 1000px;
+    min-height: 1000px;
+
+    /* center vertically and horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.debug-div  {
+    outline: black solid 2px;
+}
