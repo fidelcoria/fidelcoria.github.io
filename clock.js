@@ -64,6 +64,6 @@ timeSlider.oninput = function () {
 function updateTranslation() {
     const dx = Math.floor(getDeltaX() * getDilation());
     const dy = Math.floor(getDeltaY() * getDilation());
-    faceContainer.style.left = `${-dx}px`;
-    faceContainer.style.top = `${dy}px`;
+    faceContainer.style.left = `${200-dx}px`;
+    faceContainer.style.top = `${200+dy}px`;
 }
