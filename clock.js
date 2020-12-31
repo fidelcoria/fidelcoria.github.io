@@ -66,31 +66,49 @@ const outputTime = document.getElementById("outputTime");
 const zoomSlider = document.getElementById("zoom");
 zoomSlider.oninput = function() {
     zoom = this.value;
-    outputZoom.innerHTML = zoom;
+    applyDilationToClockFace(zoom);
+    updateTranslation(timeAngleRadians, zoom);
+}
 
-    const newFaceSideLength = Math.floor(viewportDiameter * getDilation(zoom));
+function applyDilationToClockFace(z) {
+    outputZoom.innerHTML = z;
+
+    const newFaceSideLength = Math.floor(viewportDiameter * getDilation(z));
     clockFace.style.width = `${newFaceSideLength}px`;
     clockFace.style.height = `${newFaceSideLength}px`;
     hourHand.style.width = `${newFaceSideLength}px`;
     hourHand.style.height = `${newFaceSideLength}px`;
-    updateTranslation();
 }
 
 const timeSlider = document.getElementById("time");
 timeSlider.oninput = function () {
-    timeAngleRadians = this.value * Math.PI / 180;
+    timeAngleRadians = (360-this.value) * Math.PI / 180;
     outputTime.innerHTML = this.value;
-    const hourHandRotate = 90-this.value;
-    document.getElementById("hourHand").style.transform = `rotate(${hourHandRotate}deg)`
-
-    updateTranslation();
+    
+    applyTimeToHourHand((360-this.value));
+    updateTranslation(timeAngleRadians, zoom);
 }
 
-function updateTranslation() {
-    const dx = Math.floor(getDeltaX(timeAngleRadians, zoom) * getDilation(zoom));
-    const dy = Math.floor(getDeltaY(timeAngleRadians, zoom) * getDilation(zoom));
+function applyTimeToHourHand(tDeg) {
+
+    const hourHandRotate = 90-tDeg;
+    document.getElementById("hourHand").style.transform = `rotate(${hourHandRotate}deg)`
+}
+
+function updateTranslation(t, z) {
+    const dx = Math.floor(getDeltaX(t, z) * getDilation(z));
+    const dy = Math.floor(getDeltaY(t, z) * getDilation(z));
     faceContainer.style.left = `${faceContainerInitialOffset-dx}px`;
     faceContainer.style.top = `${faceContainerInitialOffset+dy}px`;
     hourHandContainer.style.left = `${faceContainerInitialOffset-dx}px`;
     hourHandContainer.style.top = `${faceContainerInitialOffset+dy}px`;
 }
+
+/// custom init update
+applyDilationToClockFace(100);
+applyTimeToHourHand(0);
+updateTranslation(0, 100);
+
+// workaround for zoom rendering
+zoom = 100;
+zoomSlider.setAttribute("value", "100");
