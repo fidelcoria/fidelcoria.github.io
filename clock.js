@@ -34,7 +34,9 @@ const faceContainerSide = Math.ceil(viewportDiameter * getDilation(maxZoom))
 const faceContainerInitialOffset = Math.floor((squarePlateSide - faceContainerSide) / 2);
 
 const clockFace = document.getElementById("clockFace");
+const hourHand = document.getElementById("hourHand");
 const faceContainer = document.getElementById("faceContainer");
+const hourHandContainer = document.getElementById("hourHandContainer");
 
 // INITIALIZE SIZES
 document.getElementById("wrapper").style.width = squarePlateSide
@@ -43,8 +45,14 @@ faceContainer.style.left = `${faceContainerInitialOffset}px`
 faceContainer.style.top = `${faceContainerInitialOffset}px`
 faceContainer.style.minWidth = `${faceContainerSide}px`
 faceContainer.style.minHeight = `${faceContainerSide}px`
+hourHandContainer.style.left = `${faceContainerInitialOffset}px`
+hourHandContainer.style.top = `${faceContainerInitialOffset}px`
+hourHandContainer.style.minWidth = `${faceContainerSide}px`
+hourHandContainer.style.minHeight = `${faceContainerSide}px`
 clockFace.style.width = `${viewportDiameter}px`
 clockFace.style.height = `${viewportDiameter}px`
+hourHand.style.width = `${viewportDiameter}px`
+hourHand.style.height = `${viewportDiameter}px`
 document.getElementById("viewportContainer").style.width = `${squarePlateSide}px`
 document.getElementById("viewportContainer").style.height = `${squarePlateSide}px`
 document.getElementById("clockViewport").style.width = `${squarePlateSide}px`
@@ -63,6 +71,8 @@ zoomSlider.oninput = function() {
     const newFaceSideLength = Math.floor(viewportDiameter * getDilation(zoom));
     clockFace.style.width = `${newFaceSideLength}px`;
     clockFace.style.height = `${newFaceSideLength}px`;
+    hourHand.style.width = `${newFaceSideLength}px`;
+    hourHand.style.height = `${newFaceSideLength}px`;
     updateTranslation();
 }
 
@@ -70,7 +80,7 @@ const timeSlider = document.getElementById("time");
 timeSlider.oninput = function () {
     timeAngleRadians = this.value * Math.PI / 180;
     outputTime.innerHTML = this.value;
-    const hourHandRotate = -this.value;
+    const hourHandRotate = 90-this.value;
     document.getElementById("hourHand").style.transform = `rotate(${hourHandRotate}deg)`
 
     updateTranslation();
@@ -81,4 +91,6 @@ function updateTranslation() {
     const dy = Math.floor(getDeltaY(timeAngleRadians, zoom) * getDilation(zoom));
     faceContainer.style.left = `${faceContainerInitialOffset-dx}px`;
     faceContainer.style.top = `${faceContainerInitialOffset+dy}px`;
+    hourHandContainer.style.left = `${faceContainerInitialOffset-dx}px`;
+    hourHandContainer.style.top = `${faceContainerInitialOffset+dy}px`;
 }

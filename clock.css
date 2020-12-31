@@ -1,7 +1,7 @@
 .slidecontainer {
     width: 100%; /* Width of the outside container */
 }
-  
+
 .slider {
     width: 100%; /* Full-width */
     background: #d3d3d3; /* Grey background */
@@ -13,7 +13,7 @@
     position: absolute;
 }
 
-#faceContainer {
+.floatCenter {
     position: absolute;
 
     /* center vertically and horizontally */
@@ -23,5 +23,5 @@
 }
 
 .debug-div  {
-    outline: red solid 2px;
+    outline: red solid 1px;
 }
