@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="clock.css"/>
     </head>
     <body>
-        <div id="wrapper">
+        <div id="wrapper" style="overflow: hidden; position: relative;">
             <div id="faceContainer" class="floatCenter">
                 <img
                     id="clockFace"
@@ -18,7 +18,7 @@
                     alt="hour hand"
                 />
             </div>
-            <div id="viewportContainer" class="pin-to-corner">
+            <div id="viewportContainer" class="floatCenter">
                 <img
                     id="clockViewport"
                     src="clock_mask.svg"

@@ -1,5 +1,4 @@
-const squarePlateSide = 600;
-const viewportDiameter = squarePlateSide / 3;
+const viewportDiameter = 200;
 const viewportRadius = viewportDiameter / 2;
 const maxZoom = viewportRadius * Math.tan(55 * Math.PI / 180);
 
@@ -31,7 +30,7 @@ const getDilation = (z) =>
     viewportRadius/getHalfChord(z);
 
 const faceContainerSide = Math.ceil(viewportDiameter * getDilation(maxZoom))
-const faceContainerInitialOffset = Math.floor((squarePlateSide - faceContainerSide) / 2);
+const faceContainerInitialOffset = Math.floor((viewportDiameter - faceContainerSide) / 2);
 
 const clockFace = document.getElementById("clockFace");
 const hourHand = document.getElementById("hourHand");
@@ -39,8 +38,8 @@ const faceContainer = document.getElementById("faceContainer");
 const hourHandContainer = document.getElementById("hourHandContainer");
 
 // INITIALIZE SIZES
-document.getElementById("wrapper").style.width = squarePlateSide
-document.getElementById("wrapper").style.height = squarePlateSide
+document.getElementById("wrapper").style.width = viewportDiameter
+document.getElementById("wrapper").style.height = viewportDiameter
 faceContainer.style.left = `${faceContainerInitialOffset}px`
 faceContainer.style.top = `${faceContainerInitialOffset}px`
 faceContainer.style.minWidth = `${faceContainerSide}px`
@@ -53,10 +52,10 @@ clockFace.style.width = `${viewportDiameter}px`
 clockFace.style.height = `${viewportDiameter}px`
 hourHand.style.width = `${viewportDiameter}px`
 hourHand.style.height = `${viewportDiameter}px`
-document.getElementById("viewportContainer").style.width = `${squarePlateSide}px`
-document.getElementById("viewportContainer").style.height = `${squarePlateSide}px`
-document.getElementById("clockViewport").style.width = `${squarePlateSide}px`
-document.getElementById("clockViewport").style.height = `${squarePlateSide}px`
+document.getElementById("viewportContainer").style.width = `${viewportDiameter}px`
+document.getElementById("viewportContainer").style.height = `${viewportDiameter}px`
+document.getElementById("clockViewport").style.width = `${viewportDiameter * 3}px`
+document.getElementById("clockViewport").style.height = `${viewportDiameter*3}px`
 document.getElementById("zoom").setAttribute("max", `${maxZoom}`)
 // END INITIALIZE SIZES
 
